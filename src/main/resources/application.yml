@@ -1,0 +1,23 @@
+server:
+  error:
+    include-message: always
+spring:
+  application:
+    name: project-localstack
+    profiles: project-localstack
+
+localstack:
+  s3:
+    endpoint: http://localhost:4566
+  sqs:
+    endpoint: http://localhost:4576
+  dynamoDB:
+    endpoint: http://localhost:4566
+bucket:
+  name: local-bucket
+  region: sa-east-1
+
+cloud:
+  aws:
+    region: us-east-1
+
