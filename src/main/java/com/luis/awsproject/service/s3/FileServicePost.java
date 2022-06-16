@@ -21,13 +21,10 @@ public class FileServicePost {
 
 	private final AmazonS3 amazonS3;
 
-	@Value("${bucket.name}")
-	private String BUCKET;
-
 	@Value("${bucket.region}")
 	private String REGION;
 
-	public Attachment write(MultipartFile file, String keyName) {
+	public Attachment write(MultipartFile file, String keyName, String bucketName) {
 		byte[] content = new byte[0];
 
 		try {
@@ -35,7 +32,7 @@ public class FileServicePost {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return createAttachment(content, file.getOriginalFilename());
+		return createAttachment(content, file.getOriginalFilename(), bucketName);
 	}
 
 	public Attachment createBucket(String bucketName){
@@ -44,7 +41,7 @@ public class FileServicePost {
 			throw new ServiceException(String.format("Bucket %s already exists.", bucketName));
 		}
 		try {
-			bucket = amazonS3.createBucket(createBucketRequest(bucketName, REGION));
+			bucket = amazonS3.createBucket(createBucketRequest(bucketName, "us-east-1"));
 			amazonS3.createBucket(bucketName);
 		} catch (AmazonS3Exception e) {
 			e.getMessage();
@@ -56,11 +53,11 @@ public class FileServicePost {
 		return new CreateBucketRequest(nameBucket, region);
 	}
 
-	private Attachment createAttachment(byte[] bytes, String defaultFileName) {
+	private Attachment createAttachment(byte[] bytes, String defaultFileName, String bucketName) {
 		String contentType = "application/txt";
-		upload(request(stream(bytes), BUCKET, defaultFileName, contentType));
+		upload(request(stream(bytes), bucketName, defaultFileName, contentType));
 
-		return attachment(defaultFileName, defaultFileName, contentType);
+		return attachment(defaultFileName, defaultFileName, contentType, bucketName);
 	}
 
 	private ByteArrayOutputStream stream(byte[] bytes) {
@@ -102,10 +99,10 @@ public class FileServicePost {
 				.build();
 	}
 
-	private Attachment attachment(String fileName, String key, String contentType) {
+	private Attachment attachment(String fileName, String key, String contentType, String bucketName) {
 		return Attachment.builder()
 				.key(key)
-				.bucket(BUCKET)
+				.bucket(bucketName)
 				.contentType(contentType)
 				.fileName(fileName)
 				.build();

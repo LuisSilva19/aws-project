@@ -1,8 +1,10 @@
 spring:
+  application:
+    name: project-localstack
+---
+spring:
   config:
     activate:
-      on-profile: default, local
+      on-profile: local
 aws:
-  paramstore:
-    enabled: true
   region: us-east-1

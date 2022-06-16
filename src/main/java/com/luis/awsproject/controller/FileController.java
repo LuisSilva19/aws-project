@@ -25,10 +25,11 @@ public class FileController {
     private final FileServiceGet fileServiceGet;
     private final FileServiceDelete fileServiceDelete;
 
-    @PostMapping("bucket/{keyName}")
+    @PostMapping("bucket/{bucketName}/{keyName}")
     public Attachment recordFileS3(@RequestParam("file") MultipartFile file,
-                                   @PathVariable("keyName") String keyName){
-        return fileServicePost.write(file, keyName);
+                                   @PathVariable("keyName") String keyName,
+                                   @PathVariable("bucketName") String bucketName){
+        return fileServicePost.write(file, keyName, bucketName);
     }
 
     @PostMapping("/{nameBucket}")
@@ -38,7 +39,7 @@ public class FileController {
 
     @GetMapping("/save/{nameBucket}/{keyName}")
     public void saveObjectS3(@PathVariable("nameBucket") String nameBucket,
-                           @PathVariable("keyName") String keyName){
+                             @PathVariable("keyName") String keyName){
         fileServiceGet.doesBucketExist(nameBucket);
         fileServiceGet.doesObjectExist(nameBucket, keyName);
         fileServiceGet.saveObjectS3(nameBucket,keyName);
@@ -49,6 +50,14 @@ public class FileController {
                                             @PathVariable("keyName") String keyName){
         var object = fileServiceGet.getObject(nameBucket, keyName);
         return new ResponseEntity<>(object, headers(keyName, MediaType.APPLICATION_OCTET_STREAM),OK);
+    }
+
+    private HttpHeaders headers(String fileName, MediaType type){
+        HttpHeaders h = new HttpHeaders();
+        h.setContentType(type);
+        h.setContentDispositionFormData(fileName, fileName);
+        h.setCacheControl("must-revalidate, post-check=0, pre-check=0");
+        return h;
     }
 
     @GetMapping()
@@ -65,13 +74,5 @@ public class FileController {
     @DeleteMapping("/{nameBucket}")
     public void deleteBucket(@PathVariable("nameBucket")String nameBucket){
         fileServiceDelete.deleteBucket(nameBucket);
-    }
-
-    private HttpHeaders headers(String fileName, MediaType type){
-        HttpHeaders h = new HttpHeaders();
-        h.setContentType(type);
-        h.setContentDispositionFormData(fileName, fileName);
-        h.setCacheControl("must-revalidate, post-check=0, pre-check=0");
-        return h;
     }
 }
