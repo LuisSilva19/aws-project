@@ -1,0 +1,39 @@
+2022-07-04 00:40:07,064 INFO c.l.a.awsProjectApplication [main] project up
+2022-07-04 00:40:07,070 INFO c.l.a.awsProjectApplication [main] tem que ir
+2022-07-04 00:40:07,070 INFO c.l.a.awsProjectApplication [main] Info Message Logged !!!
+2022-07-04 00:40:07,071 ERROR c.l.a.awsProjectApplication [main] Error Message Logged !!!
+java.lang.NullPointerException: NullError
+	at com.luis.awsproject.awsProjectApplication.main(awsProjectApplication.java:19) ~[classes/:?]
+2022-07-04 00:40:07,401 INFO c.l.a.awsProjectApplication [restartedMain] project up
+2022-07-04 00:40:07,404 INFO c.l.a.awsProjectApplication [restartedMain] tem que ir
+2022-07-04 00:40:07,404 INFO c.l.a.awsProjectApplication [restartedMain] Info Message Logged !!!
+2022-07-04 00:40:07,409 ERROR c.l.a.awsProjectApplication [restartedMain] Error Message Logged !!!
+java.lang.NullPointerException: NullError
+	at com.luis.awsproject.awsProjectApplication.main(awsProjectApplication.java:19) ~[classes/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) ~[spring-boot-devtools-2.7.0.jar:2.7.0]
+2022-07-04 00:40:09,023 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 6.2.3.Final
+2022-07-04 00:40:09,106 INFO o.s.b.l.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-07-04 00:40:11,108 INFO o.s.c.c.c.ConfigServicePropertySourceLocator [restartedMain] Fetching config from server at : http://localhost:8888
+2022-07-04 00:40:11,158 INFO o.s.c.c.c.ConfigServicePropertySourceLocator [restartedMain] Connect Timeout Exception on Url - http://localhost:8888. Will be trying the next url if available
+2022-07-04 00:40:11,159 WARN o.s.c.c.c.ConfigServicePropertySourceLocator [restartedMain] Could not locate PropertySource: I/O error on GET request for "http://localhost:8888/project-localstack/default": Connection refused (Connection refused); nested exception is java.net.ConnectException: Connection refused (Connection refused)
+2022-07-04 00:40:12,634 INFO o.s.c.b.c.PropertySourceBootstrapConfiguration [restartedMain] Located property source: [BootstrapPropertySource {name='bootstrapProperties-/config/project-localstack/'}, BootstrapPropertySource {name='bootstrapProperties-/config/application/'}]
+2022-07-04 00:40:12,641 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2022-07-04 00:40:13,248 INFO o.s.c.c.s.GenericScope [restartedMain] BeanFactory id=881eb7c4-2a70-339e-8c2a-f9dfa366a5cd
+2022-07-04 00:40:13,735 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2022-07-04 00:40:13,746 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2022-07-04 00:40:13,746 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2022-07-04 00:40:13,747 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-07-04 00:40:13,830 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2022-07-04 00:40:13,831 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1167 ms
+2022-07-04 00:40:14,354 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2022-07-04 00:40:15,051 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2022-07-04 00:40:15,076 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2022-07-04 00:40:15,817 INFO o.s.b.StartupInfoLogger [restartedMain] Started awsProjectApplication in 8.38 seconds (JVM running for 10.249)
+2022-07-04 00:40:47,167 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-07-04 00:40:47,168 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2022-07-04 00:40:47,168 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 0 ms
+2022-07-04 00:40:47,187 INFO c.l.a.c.customerController [http-nio-8080-exec-1] funfou

@@ -8,3 +8,5 @@ spring:
       on-profile: local
 aws:
   region: us-east-1
+  paramstore:
+    enabled: true

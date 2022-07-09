@@ -19,11 +19,8 @@ import org.springframework.context.annotation.Profile;
 public class AwsConfiguration {
 
     @Bean
-//    @Profile({"local", "default"})
     public AmazonS3 S3() {
         return AmazonS3ClientBuilder.standard()
-                //.withCredentials(provider())
-//                .enableRegionalUsEast1Endpoint()
                 .withRegion("sa-east-1")
                 .withPathStyleAccessEnabled(true)
                 .build();
@@ -32,7 +29,6 @@ public class AwsConfiguration {
     @Bean
     public AmazonDynamoDB DynamoDB() {
         return AmazonDynamoDBClientBuilder.standard()
-                //.withCredentials(provider())
                 .withRegion("sa-east-1")
                 .build();
     }

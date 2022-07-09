@@ -4,6 +4,8 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.*;
 import com.luis.awsproject.exception.ServiceException;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -13,9 +15,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Log4j2
 @RequiredArgsConstructor
 public class FileServiceGet {
-
     private final AmazonS3 amazonS3;
 
     public boolean doesObjectExist(String nameBucket, String keyName){
@@ -40,6 +42,7 @@ public class FileServiceGet {
                 fos.write(bytes, 0, readLen);
             }
         } catch (IOException e) {
+            log.error(e.getMessage(), e.getCause());
             throw new ServiceException(e.getMessage());
         }
     }
